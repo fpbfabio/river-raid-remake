@@ -3,7 +3,8 @@
 
 var PLAYER_DISTANCE_TO_BORDER = 50;
 var PLAYER_VELOCITY_X = 300;
-
+var PLAYER_ANCHOR_X = 0.5;
+var PLAYER_ANCHOR_Y = 0.5;
 
 var Player = function (game) {
     "use strict";
@@ -15,7 +16,7 @@ Player.prototype = {
         "use strict";
         var y = Screen.HEIGHT - PLAYER_DISTANCE_TO_BORDER;
         this.sprite = this.game.add.sprite(this.game.world.centerX, y, Assets.PLAYER_SPRITE_KEY);
-        this.sprite.anchor = { x: 0.5, y: 0.5 };
+        this.sprite.anchor.set(PLAYER_ANCHOR_X, PLAYER_ANCHOR_Y);
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     },
     update: function () {

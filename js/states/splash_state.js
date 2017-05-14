@@ -10,6 +10,7 @@ SplashState.prototype = {
         "use strict";
         this.game.load.onLoadComplete.add(this.nextState, this);
         this.game.load.image(Assets.PLAYER_SPRITE_KEY, Assets.PLAYER_SPRITE_DIR);
+        this.game.load.image(Assets.BULLET_SPRITE_KEY, Assets.BULLET_SPRITE_DIR);
     },
     nextState: function () {
         "use strict";
