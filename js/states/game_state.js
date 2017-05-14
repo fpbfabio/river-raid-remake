@@ -12,5 +12,9 @@ GameState.prototype = {
         "use strict";
         this.background.create();
         this.player.create();
+    },
+    update: function () {
+        "use strict";
+        this.player.update();
     }
 };
