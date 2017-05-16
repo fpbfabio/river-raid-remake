@@ -17,5 +17,8 @@ Environment.prototype = {
                                   Environment.WORLD_BOUND_Y,
                                   Environment.WORLD_BOUND_WIDTH,
                                   Environment.WORLD_BOUND_HEIGHT);
+        this.game.scale.pageAlignHorizontally = true;
+        this.game.scale.pageAlignVertically = true;
+        this.game.scale.refresh();
     }
 };
