@@ -16,6 +16,14 @@ SplashState.prototype = {
         this.game.load.image(Assets.TILESET_KEY, Assets.TILESET_DIR);
         this.game.load.tilemap(Assets.TILEMAP_KEY, Assets.TILEMAP_DIR, null,
                                Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap(Assets.TILEMAP2_KEY, Assets.TILEMAP2_DIR, null,
+                               Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap(Assets.TILEMAP3_KEY, Assets.TILEMAP3_DIR, null,
+                               Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap(Assets.TILEMAP4_KEY, Assets.TILEMAP4_DIR, null,
+                               Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap(Assets.TILEMAP5_KEY, Assets.TILEMAP5_DIR, null,
+                               Phaser.Tilemap.TILED_JSON);
     },
     nextState: function () {
         "use strict";

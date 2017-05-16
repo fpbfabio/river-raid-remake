@@ -1,15 +1,19 @@
-/*global Assets, Level*/
+/*global Level, Sequencer*/
 
 
 var Background = function (game) {
     "use strict";
     this.game = game;
+    this.sequencer = null;
     this.levels = [];
 };
 Background.prototype = {
     create: function () {
         "use strict";
-        var level = this.instantiateTilemap(Assets.TILEMAP_KEY);
+        var level, resourceKey;
+        this.sequencer = new Sequencer();
+        resourceKey = this.sequencer.generateFirstTilemapKey();
+        level = this.instantiateTilemap(resourceKey);
         level.setTilemapPosition(0, 0);
         this.levels.push(level);
     },
@@ -33,10 +37,11 @@ Background.prototype = {
     },
     createTopLevel: function () {
         "use strict";
-        var level, topLevel, y;
+        var level, topLevel, resourceKey, y;
         topLevel =  this.levels[0];
         if (topLevel.y > 0) {
-            level = this.instantiateTilemap(Assets.TILEMAP_KEY);
+            resourceKey = this.sequencer.generateNextTilemapKey();
+            level = this.instantiateTilemap(resourceKey);
             y = topLevel.y - level.getHeight();
             level.setTilemapPosition(0, y);
             this.levels.unshift(level);
