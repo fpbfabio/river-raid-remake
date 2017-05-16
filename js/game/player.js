@@ -14,7 +14,8 @@ Player.prototype = {
     create: function () {
         "use strict";
         var y = Screen.HEIGHT - Player.DISTANCE_TO_BORDER;
-        this.sprite = this.game.add.sprite(this.game.world.centerX, y, Assets.PLAYER_SPRITE_KEY);
+        this.sprite = this.game.add.sprite(this.game.world.centerX, y,
+                                           Assets.PLAYER_SPRITE_KEY);
         this.sprite.anchor.set(Player.SPRITE_ANCHOR_X, Player.SPRITE_ANCHOR_Y);
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     },
