@@ -1,10 +1,11 @@
 /*global Phaser, Assets*/
 
 
-var Level = function (game) {
+var Level = function (game, tilemapKey) {
     "use strict";
     this.game = game;
     this.tilemap = null;
+    this.tilemapKey = tilemapKey;
     this.layers = [];
     this.x = 0;
     this.y = 0;
@@ -21,7 +22,7 @@ Level.LAYERS = [
 Level.prototype = {
     create: function () {
         "use strict";
-        this.tilemap = this.game.add.tilemap(Assets.TILEMAP_KEY);
+        this.tilemap = this.game.add.tilemap(this.tilemapKey);
         this.tilemap.addTilesetImage(Assets.TILESET_JSON_KEY, Assets.TILESET_KEY);
         var i = 0, layer;
         for (i = Level.LAYERS.length - 1; i >= 0; i = i - 1) {

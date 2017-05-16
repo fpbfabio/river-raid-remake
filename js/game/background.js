@@ -1,4 +1,4 @@
-/*global Level*/
+/*global Assets, Level*/
 
 
 var Background = function (game) {
@@ -9,15 +9,21 @@ var Background = function (game) {
 Background.prototype = {
     create: function () {
         "use strict";
-        var level = new Level(this.game);
+        var level = this.instantiateTilemap(Assets.TILEMAP_KEY);
+        level.setTilemapPosition(0, 0);
         this.levels.push(level);
-        level.create();
     },
     update: function () {
         "use strict";
         this.updateLevels();
         this.createTopLevel();
         this.destroyBottomLevel();
+    },
+    instantiateTilemap: function (resourceKey) {
+        "use strict";
+        var level = new Level(this.game, resourceKey);
+        level.create();
+        return level;
     },
     updateLevels: function () {
         "use strict";
@@ -27,12 +33,12 @@ Background.prototype = {
     },
     createTopLevel: function () {
         "use strict";
-        var level, topLevel;
+        var level, topLevel, y;
         topLevel =  this.levels[0];
         if (topLevel.y > 0) {
-            level = new Level(this.game);
-            level.create();
-            level.setTilemapPosition(0, topLevel.y - level.getHeight());
+            level = this.instantiateTilemap(Assets.TILEMAP_KEY);
+            y = topLevel.y - level.getHeight();
+            level.setTilemapPosition(0, y);
             this.levels.unshift(level);
         }
     },
@@ -41,7 +47,8 @@ Background.prototype = {
         var bottomIndex, worldBottomBound, bottomLevel;
         bottomIndex = this.levels.length - 1;
         bottomLevel =  this.levels[bottomIndex];
-        worldBottomBound = this.game.world.bounds.y + this.game.world.bounds.height;
+        worldBottomBound = this.game.world.bounds.y +
+            this.game.world.bounds.height;
         if (bottomLevel.y > worldBottomBound) {
             bottomLevel.destroy();
             this.levels.splice(bottomIndex, 1);
